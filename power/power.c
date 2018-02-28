@@ -467,10 +467,7 @@ static void samsung_power_set_interactive(struct power_module *module, int on)
     }
 
 out:
-    // the boost node is only valid for the LITTLE cluster
-    sprintf(path, "%s%s", CPU_INTERACTIVE_PATHS[0], IO_IS_BUSY_PATH);
-
-    cpu_interactive_write(path, on ? ON : OFF);
+    cpu_interactive_write(IO_IS_BUSY_PATH, on ? ON : OFF);
 
     ALOGV("power_set_interactive: %d done", on);
 }
